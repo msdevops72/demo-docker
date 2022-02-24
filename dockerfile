@@ -1,5 +1,6 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-COPY run.sh .
-COPY target/*.jar app.jar
-ENTRYPOINT ["run.sh"]
+FROM node:latest
+WORKDIR /usr/src/app
+COPY nodeapp/* /
+RUN npm install
+EXPOSE 3000
+CMD [ "npm","start" ]
